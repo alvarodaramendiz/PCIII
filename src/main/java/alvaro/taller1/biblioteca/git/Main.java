@@ -3,14 +3,76 @@
 
 package alvaro.taller1.biblioteca.git; 
 
+import java.time.LocalDate;
 import java.util.ArrayList; 
 import java.util.Scanner; 
 
 public class Main { 
     static ArrayList<Cliente> clientes = new ArrayList<>(); 
     static Scanner sc = new Scanner(System.in); 
+    static ArrayList<Prestamo> prestamos = new ArrayList<>(); 
     
     static ArrayList<Libro> libros = new ArrayList<>();
+    
+    public static void crearPrestamo() {
+    System.out.println("\n--- REGISTRAR PRÉSTAMO ---");
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados. Registre un cliente primero.");
+        return;
+    }
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados. Registre un libro primero.");
+        return;
+    }
+
+    System.out.print("Ingrese el ID del préstamo: ");
+    String idPrestamo = sc.nextLine();
+
+    System.out.print("Ingrese el ID del cliente: ");
+    String idCliente = sc.nextLine();
+    sc.nextLine(); // Limpiar búfer
+
+    Cliente clienteEncontrado = null;
+    for (Cliente c : clientes) {
+        if (c.getId() == idCliente) {
+            clienteEncontrado = c;
+            break;
+        }
+    }
+
+    if (clienteEncontrado == null) {
+        System.out.println("No se encontró ningún cliente con ID: " + idCliente);
+        return;
+    }
+
+    System.out.print("Ingrese el código del libro: ");
+    String codigoLibro = sc.nextLine();
+
+    Libro libroEncontrado = null;
+    for (Libro l : libros) {
+        if (l.getCodigo().equalsIgnoreCase(codigoLibro)) {
+            libroEncontrado = l;
+            break;
+        }
+    }
+
+    if (libroEncontrado == null) {
+        System.out.println("No se encontró ningún libro con código: " + codigoLibro);
+        return;
+    }
+
+    if (!libroEncontrado.isDisponible()) {
+        System.out.println("El libro '" + libroEncontrado.getTitulo() + "' no está disponible actualmente.");
+        return;
+    }
+
+    // Actualizar disponibilidad del libro y registrar el préstamo
+    libroEncontrado.setDisponible(false);
+    Prestamo nuevoPrestamo = new Prestamo(idPrestamo, clienteEncontrado, libroEncontrado, LocalDate.now(), "PRESTADO");
+    prestamos.add(nuevoPrestamo);
+
+    System.out.println("¡Préstamo registrado exitosamente!");
+}
     
     void crearCliente() {
     System.out.println("\n--- CREAR CLIENTE ---");
