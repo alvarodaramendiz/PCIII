@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
-package alvaro.taller1.biblioteca.git;
 
-/**
- *
- * @author ALVARO
- */
-public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+package alvaro.taller1.biblioteca.git; 
+
+import java.util.ArrayList; 
+import java.util.Scanner; 
+
+public class Main { 
+    static ArrayList<Cliente> clientes = new ArrayList<>(); 
+    static Scanner sc = new Scanner(System.in); 
+
+    public static void main(String[] args) { 
+        // Aquí irá el menú (Fase 8) 
     }
 }
