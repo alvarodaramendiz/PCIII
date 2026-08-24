@@ -14,6 +14,21 @@ public class Main {
     
     static ArrayList<Libro> libros = new ArrayList<>();
     
+    public static void listarPrestamos() {
+    System.out.println("\n--- LISTA DE PRÉSTAMOS ---");
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registrados.");
+    } else {
+        for (Prestamo p : prestamos) {
+            System.out.println("ID Préstamo: " + p.getIdPrestamo() +
+                               " | Cliente: " + p.getCliente().getNombre() +
+                               " | Libro: " + p.getLibro().getTitulo() +
+                               " | Fecha: " + p.getFecha() +
+                               " | Estado: " + p.getEstado());
+        }
+    }
+}
+    
     public static void crearPrestamo() {
     System.out.println("\n--- REGISTRAR PRÉSTAMO ---");
     if (clientes.isEmpty()) {
