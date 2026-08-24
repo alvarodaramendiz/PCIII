@@ -30,6 +30,17 @@ public class Main {
 
     System.out.println("¡Cliente registrado exitosamente!");
 }
+    
+        public static void listarClientes() {
+    System.out.println("\n--- LISTA DE CLIENTES ---");
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados en el sistema.");
+    } else {
+        for (Cliente c : clientes) {
+            System.out.println(c);
+        }
+    }
+}
 
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
