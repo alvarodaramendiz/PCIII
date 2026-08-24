@@ -124,7 +124,7 @@ public class Main {
     }
 }
     
-    void crearCliente() {
+    public static void crearCliente() {
     System.out.println("\n--- CREAR CLIENTE ---");
     System.out.print("Ingrese el ID del cliente: ");
     String id = sc.nextLine();
@@ -144,7 +144,7 @@ public class Main {
 
     System.out.println("¡Cliente registrado exitosamente!");
 }
-   void listarClientes() {
+   public static void listarClientes() {
     System.out.println("\n--- LISTA DE CLIENTES ---");
     if (clientes.isEmpty()) {
         System.out.println("No hay clientes registrados en el sistema.");
@@ -155,7 +155,7 @@ public class Main {
     }
 }
     
-   void buscarCliente() {
+   public static void buscarCliente() {
     System.out.println("\n--- BUSCAR CLIENTE ---");
     if (clientes.isEmpty()) {
         System.out.println("No hay clientes para buscar.");
@@ -215,7 +215,7 @@ public class Main {
     }
 }
    
-   void eliminarCliente() {
+   public static void eliminarCliente() {
     System.out.println("\n--- ELIMINAR CLIENTE ---");
     if (clientes.isEmpty()) {
         System.out.println("No hay clientes registrados para eliminar.");
@@ -363,7 +363,66 @@ public class Main {
         System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
     }
 }
-    public static void main(String[] args) { 
-        // Aquí irá el menú (Fase 8) 
-    }
+    public static void main(String[] args) {
+    int opcion = 0;
+
+    do {
+        System.out.println("\n==========================================");
+        System.out.println("   SISTEMA DE GESTIÓN DE BIBLIOTECA");
+        System.out.println("==========================================");
+        System.out.println("--- GESTIÓN DE CLIENTES ---");
+        System.out.println("1. Crear Cliente");
+        System.out.println("2. Listar Clientes");
+        System.out.println("3. Buscar Cliente");
+        System.out.println("4. Actualizar Cliente");
+        System.out.println("5. Eliminar Cliente");
+        System.out.println("\n--- GESTIÓN DE LIBROS ---");
+        System.out.println("6. Crear Libro");
+        System.out.println("7. Listar Libros");
+        System.out.println("8. Buscar Libro");
+        System.out.println("9. Actualizar Libro");
+        System.out.println("10. Eliminar Libro");
+        System.out.println("\n--- GESTIÓN DE PRÉSTAMOS ---");
+        System.out.println("11. Registrar Préstamo");
+        System.out.println("12. Registrar Devolución");
+        System.out.println("13. Listar Préstamos");
+        System.out.println("\n0. Salir");
+        System.out.println("==========================================");
+        System.out.print("Seleccione una opción: ");
+
+        try {
+            opcion = sc.nextInt();
+            sc.nextLine(); // Limpiar búfer
+
+            switch (opcion) {
+                // Clientes
+                case 1 -> crearCliente();
+                case 2 -> listarClientes();
+                case 3 -> buscarCliente();
+                case 4 -> actualizarCliente();
+                case 5 -> eliminarCliente();
+
+                // Libros
+                case 6 -> crearLibro();
+                case 7 -> listarLibros();
+                case 8 -> buscarLibro();
+                case 9 -> actualizarLibro();
+                case 10 -> eliminarLibro();
+
+                // Préstamos
+                case 11 -> crearPrestamo();
+                case 12 -> devolverPrestamo();
+                case 13 -> listarPrestamos();
+
+                case 0 -> System.out.println("\n¡Gracias por usar el sistema de biblioteca! Hasta luego.");
+                default -> System.out.println("\nOpción inválida. Intente nuevamente.");
+            }
+        } catch (Exception e) {
+            System.out.println("\nError: Debe ingresar un número entero válido.");
+            sc.nextLine(); // Limpiar búfer en caso de excepción
+            opcion = -1;
+        }
+
+    } while (opcion != 0);
+}
 }
