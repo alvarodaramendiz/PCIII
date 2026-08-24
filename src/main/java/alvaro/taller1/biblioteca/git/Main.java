@@ -226,6 +226,31 @@ public class Main {
         System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
     }
 }
+   
+   public static void eliminarLibro() {
+    System.out.println("\n--- ELIMINAR LIBRO ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados para eliminar.");
+        return;
+    }
+
+    System.out.print("Ingrese el código del libro a eliminar: ");
+    String codigoBuscar = sc.nextLine();
+
+    boolean eliminado = false;
+    for (int i = 0; i < libros.size(); i++) {
+        if (libros.get(i).getCodigo().equalsIgnoreCase(codigoBuscar)) {
+            libros.remove(i);
+            System.out.println("¡Libro eliminado exitosamente!");
+            eliminado = true;
+            break;
+        }
+    }
+
+    if (!eliminado) {
+        System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
+    }
+}
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
     }
