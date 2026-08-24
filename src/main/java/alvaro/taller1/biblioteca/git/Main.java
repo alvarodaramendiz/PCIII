@@ -74,6 +74,41 @@ public class Main {
     System.out.println("¡Préstamo registrado exitosamente!");
 }
     
+    public static void devolverPrestamo() {
+    System.out.println("\n--- DEVOLUCIÓN DE PRÉSTAMO ---");
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registrados en el sistema.");
+        return;
+    }
+
+    System.out.print("Ingrese el ID del préstamo a devolver: ");
+    String idBuscar = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Prestamo p : prestamos) {
+        if (p.getIdPrestamo().equalsIgnoreCase(idBuscar)) {
+            if (p.getEstado().equalsIgnoreCase("DEVUELTO")) {
+                System.out.println("Este préstamo ya fue devuelto anteriormente.");
+                encontrado = true;
+                break;
+            }
+
+            // Cambiar estado del préstamo y restaurar disponibilidad del libro
+            p.setEstado("DEVUELTO");
+            p.getLibro().setDisponible(true);
+
+            System.out.println("¡Devolución registrada exitosamente!");
+            System.out.println("El libro '" + p.getLibro().getTitulo() + "' vuelve a estar disponible.");
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontró ningún préstamo con ID: " + idBuscar);
+    }
+}
+    
     void crearCliente() {
     System.out.println("\n--- CREAR CLIENTE ---");
     System.out.print("Ingrese el ID del cliente: ");
