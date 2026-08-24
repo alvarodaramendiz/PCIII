@@ -164,6 +164,35 @@ public class Main {
         }
     }
 }
+   
+   public static void buscarLibro() {
+    System.out.println("\n--- BUSCAR LIBRO ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros para buscar.");
+        return;
+    }
+
+    System.out.print("Ingrese el código a buscar: ");
+    String codigoBuscar = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equalsIgnoreCase(codigoBuscar)) {
+            System.out.println("Libro encontrado:");
+            System.out.println("Código: " + l.getCodigo() + 
+                               " | Título: " + l.getTitulo() + 
+                               " | Autor: " + l.getAutor() + 
+                               " | Año: " + l.getAnioPublico() + 
+                               " | Disponible: " + (l.isDisponible() ? "Sí" : "No"));
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
+    }
+}
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
     }
