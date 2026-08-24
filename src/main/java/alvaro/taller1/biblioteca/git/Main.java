@@ -129,19 +129,41 @@ public class Main {
     }
 }
    
-   void crearLibro() {
+   public static void crearLibro() {
     System.out.println("\n--- CREAR LIBRO ---");
     System.out.print("Ingrese el código del libro: ");
     String codigo = sc.nextLine();
+
     System.out.print("Ingrese el título: ");
     String titulo = sc.nextLine();
+
+    System.out.print("Ingrese el año de publicación: ");
+    String anioPublico = sc.nextLine();
+
     System.out.print("Ingrese el autor: ");
     String autor = sc.nextLine();
 
-    libros.add(new Libro(codigo, titulo, autor));
+    // Por defecto se registra como disponible (true)
+    Libro nuevoLibro = new Libro(autor, true, codigo, titulo, anioPublico);
+    libros.add(nuevoLibro);
+
     System.out.println("¡Libro registrado exitosamente!");
 }
 
+   public static void listarLibros() {
+    System.out.println("\n--- LISTA DE LIBROS ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados.");
+    } else {
+        for (Libro l : libros) {
+            System.out.println("Código: " + l.getCodigo() + 
+                               " | Título: " + l.getTitulo() + 
+                               " | Autor: " + l.getAutor() + 
+                               " | Año: " + l.getAnioPublico() + 
+                               " | Disponible: " + (l.isDisponible() ? "Sí" : "No"));
+        }
+    }
+}
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
     }
