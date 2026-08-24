@@ -10,6 +10,8 @@ public class Main {
     static ArrayList<Cliente> clientes = new ArrayList<>(); 
     static Scanner sc = new Scanner(System.in); 
     
+    static ArrayList<Libro> libros = new ArrayList<>();
+    
     void crearCliente() {
     System.out.println("\n--- CREAR CLIENTE ---");
     System.out.print("Ingrese el ID del cliente: ");
@@ -125,6 +127,19 @@ public class Main {
     if (!eliminado) {
         System.out.println("No se encontró ningún cliente con el ID: " + idBuscar);
     }
+}
+   
+   void crearLibro() {
+    System.out.println("\n--- CREAR LIBRO ---");
+    System.out.print("Ingrese el código del libro: ");
+    String codigo = sc.nextLine();
+    System.out.print("Ingrese el título: ");
+    String titulo = sc.nextLine();
+    System.out.print("Ingrese el autor: ");
+    String autor = sc.nextLine();
+
+    libros.add(new Libro(codigo, titulo, autor));
+    System.out.println("¡Libro registrado exitosamente!");
 }
 
     public static void main(String[] args) { 
