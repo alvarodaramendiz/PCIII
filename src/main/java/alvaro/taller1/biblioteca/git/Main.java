@@ -30,7 +30,6 @@ public class Main {
 
     System.out.println("¡Cliente registrado exitosamente!");
 }
-    
         public static void listarClientes() {
     System.out.println("\n--- LISTA DE CLIENTES ---");
     if (clientes.isEmpty()) {
@@ -39,6 +38,32 @@ public class Main {
         for (Cliente c : clientes) {
             System.out.println(c);
         }
+    }
+}
+    
+    public static void buscarCliente() {
+    System.out.println("\n--- BUSCAR CLIENTE ---");
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes para buscar.");
+        return;
+    }
+
+    System.out.print("Ingrese el ID del cliente a buscar: ");
+    String idBuscar = sc.nextLine();
+    sc.nextLine(); // Limpiar búfer
+
+    boolean encontrado = false;
+    for (Cliente c : clientes) {
+        if (c.getId() == idBuscar) {
+            System.out.println("Cliente encontrado:");
+            System.out.println(c);
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontró ningún cliente con el ID: " + idBuscar);
     }
 }
 
