@@ -100,6 +100,32 @@ public class Main {
         System.out.println("No se encontró ningún cliente con el ID: " + idBuscar);
     }
 }
+   
+   void eliminarCliente() {
+    System.out.println("\n--- ELIMINAR CLIENTE ---");
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados para eliminar.");
+        return;
+    }
+
+    System.out.print("Ingrese el ID del cliente a eliminar: ");
+    String idBuscar = sc.nextLine();
+    sc.nextLine(); // Limpiar el búfer
+
+    boolean eliminado = false;
+    for (int i = 0; i < clientes.size(); i++) {
+        if (clientes.get(i).getId() == idBuscar) {
+            clientes.remove(i);
+            System.out.println("¡Cliente eliminado exitosamente!");
+            eliminado = true;
+            break;
+        }
+    }
+
+    if (!eliminado) {
+        System.out.println("No se encontró ningún cliente con el ID: " + idBuscar);
+    }
+}
 
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
