@@ -193,6 +193,39 @@ public class Main {
         System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
     }
 }
+   
+   public static void actualizarLibro() {
+    System.out.println("\n--- ACTUALIZAR LIBRO ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados para actualizar.");
+        return;
+    }
+
+    System.out.print("Ingrese el código del libro a actualizar: ");
+    String codigoBuscar = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equalsIgnoreCase(codigoBuscar)) {
+            System.out.print("Ingrese nuevo título (actual: " + l.getTitulo() + "): ");
+            l.setTitulo(sc.nextLine());
+
+            System.out.print("Ingrese nuevo autor (actual: " + l.getAutor() + "): ");
+            l.setAutor(sc.nextLine());
+
+            System.out.print("Ingrese nuevo año de publicación (actual: " + l.getAnioPublico() + "): ");
+            l.setAnioPublico(sc.nextLine());
+
+            System.out.println("¡Libro actualizado exitosamente!");
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontró ningún libro con el código: " + codigoBuscar);
+    }
+}
     public static void main(String[] args) { 
         // Aquí irá el menú (Fase 8) 
     }
